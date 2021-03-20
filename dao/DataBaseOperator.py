@@ -4,7 +4,7 @@ import configparser
 config = configparser.ConfigParser()
 # 注意修改绝对路径，不要使用相对路径，否则在import时会keyError
 config_file = 'E:/learn/2103/SimulationStockBasedOnQQBot/dao/dataBaseConfig.ini'
-config.read(config_file,encoding='utf-8')
+config.read(config_file, encoding='utf-8')
 user = config['connect_mysql']['user']
 password = config['connect_mysql']['password']
 db = config['connect_mysql']['db']
@@ -57,6 +57,12 @@ class DataBaseOperator:
     def deleteRecord(self, table, primary_key):
         pass
 
+    # 删：删除表table(str)中两个字段组成一个主键的记录
+    # 其中字段A为primary_key_A,字段B为primary_key_B
+    # 成功后打印信息
+    def deleteRecordWithTwoFields(self, table, primary_key_A, primaary_key_B):
+        pass
+
     # 改：将表table(str)中主键（id)为primary_key(str)的记录，修改为record
     # 成功后打印信息
     def changeRecord(self, table, primary_key, record):
@@ -64,9 +70,24 @@ class DataBaseOperator:
 
     # 查：返回表table(str)中主键(id)为primary_key的记录
     # 成功后打印信息
-    def searchRecord(self, table, primary_key, record):
+    def searchRecord(self, table, primary_key):
         pass
 
+    # 查：返回表table(str)中主键(id)为primary_key的记录的表头为record_head的值
+    # 成功后打印信息
+    def searchRecordValue(self, table, primary_key, record_head):
+        pass
+
+
+    # 查：返回表table(str)中两个字段组成一个主键的记录
+    # 其中字段A为primary_key_A,字段B为primary_key_B
+    def searchRecordWithTwoFields(self, table, primary_key_A, primary_key_B):
+        pass
+
+    # 查：返回表table(str)中两个字段组成一个主键的记录的表头为record_head的值
+    # 其中字段A为primary_key_A,字段B为primary_key_B
+    def searchRecordWithTwoFieldsValue(self,table,primary_key_A,primary_key_B,record_head):
+        pass
 
 if __name__ == "__main__":
     operator = DataBaseOperator()
